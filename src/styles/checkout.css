@@ -1,0 +1,74 @@
+@import '../index.css';
+/* checkout.css */
+.checkout__form {
+  background-color: #f6eeee;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form__group {
+  margin-bottom: 15px;
+}
+
+.form__group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #6e5a5a;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.addToCart__btn {
+  background-color: #df2020;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  display: block; 
+  margin: 0 auto; /* Căn giữa nút theo chiều ngang */
+}
+
+
+.checkout__bill {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout__bill h6 {
+  margin-bottom: 10px;
+}
+
+.checkout__total {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.checkout__total h5 {
+  font-weight: bold;
+}
+
+.checkout__bill {
+  background: var(--third-color);
+  padding: 30px;
+}
+
+.checkout__total {
+  border-top: 1px solid rgba(221, 221, 221, 0.85);
+  padding-top: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .checkout__total h6,
+  .checkout__bill h6 {
+    font-size: 0.9rem;
+  }
+  .checkout__bill {
+    margin-top: 40px;
+  }
+}
