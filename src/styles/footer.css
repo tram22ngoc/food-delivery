@@ -3,8 +3,9 @@
 .footer {
   padding-top: 50px;
   padding-bottom: 30px;
-  background: var(--third-color);
+  background: paleturquoise; /* Thay đổi màu nền bằng mã màu bạn muốn sử dụng */
 }
+
 
 .footer__logo img {
   width: calc(100% - 80%);

@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-
 import { useSelector } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 import CommonSection from '../components/UI/common-section/CommonSection';
 import Helmet from '../components/Helmet/Helmet';
 import '../styles/checkout.css';
+
 const Checkout = () => {
+  //enteredName, enteredEmail, enteredNumber, enteredAddress
+  // enteredCountry, và submitted được sử dụng để lưu thông tin mà người dùng
   const [enteredName, setEnteredName] = useState('');
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredNumber, setEnteredNumber] = useState('');
   const [enteredAddress, setEnteredAddress] = useState('');
   const [enteredCountry, setEnteredCountry] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const shippingInfo = [];
+ //shippingInfo là một mảng để lưu thông tin địa chỉ giao hàng.
+ //cartTotalAmount được sử dụng để lấy tổng số tiền trong giỏ hàng
+  const shippingInfo = []; 
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
-  const shippingCost = 10;
+  const shippingCost = 10; 
   const totalAmount = cartTotalAmount + shippingCost;
+
   const submitHandler = (e) => {
     e.preventDefault();
     const userShippingAddress = {
@@ -27,8 +33,9 @@ const Checkout = () => {
     };
 
     shippingInfo.push(userShippingAddress);
-    console.log(shippingInfo);
+    setSubmitted(true);
   };
+
   return (
     <Helmet title='Checkout'>
       <CommonSection title='Checkout' />
@@ -37,11 +44,7 @@ const Checkout = () => {
           <Row>
             <Col lg='8' md='6'>
               <h6 className='mb-4'>Shipping Address</h6>
-              <form
-                action=''
-                className='checkout__form'
-                onSubmit={submitHandler}
-              >
+              <form onSubmit={submitHandler}>
                 <div className='form__group'>
                   <input
                     required
@@ -75,8 +78,6 @@ const Checkout = () => {
                   />
                 </div>
                 <div className='form__group'>
-                </div>
-                <div className='form__group'>
                   <input
                     required
                     type='text'
@@ -84,7 +85,9 @@ const Checkout = () => {
                     onChange={(e) => setEnteredCountry(e.target.value)}
                   />
                 </div>
-                <button className='addToCart__btn'>Pay for your order</button>
+                <button className='addToCart__btn' type='submit'>
+               Pay for your order
+                </button>
               </form>
             </Col>
             <Col lg='4' md='6'>
@@ -93,7 +96,7 @@ const Checkout = () => {
                   Subtotal:<span>${cartTotalAmount}</span>
                 </h6>
                 <h6 className='d-flex align-items-center justify-content-between mb-3'>
-                Transport fee:<span>${shippingCost}</span>
+                  Transport fee:<span>${shippingCost}</span>
                 </h6>
                 <div className='checkout__total'>
                   <h5 className='d-flex align-items-center justify-content-between'>

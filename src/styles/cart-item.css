@@ -32,12 +32,18 @@
   cursor: pointer;
 }
 
+/* Thay đổi màu và biểu tượng nút xóa */
 .delete__btn {
-  outline: none;
-  font-size: 1.1rem;
-  font-weight: 600;
   cursor: pointer;
+  color: red;
+  font-size: 20px;
 }
+
+/* Thay đổi màu khi di chuột qua nút */
+.delete__btn:hover {
+  color: darkred;
+}
+
 .cart__item {
   padding-bottom: 10px;
   border-bottom: 1px solid var(--third-color) !important;

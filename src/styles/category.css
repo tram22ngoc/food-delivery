@@ -1,7 +1,7 @@
 @import '../index.css';
 
 .category__item {
-  background: var(--third-color);
+  background-color:paleturquoise;
   padding: 30px 20px;
   border-radius: 5px;
   cursor: pointer;

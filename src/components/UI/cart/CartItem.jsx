@@ -6,15 +6,19 @@ import '../../../styles/cart-item.css';
 const CartItem = ({ item }) => {
   const { id, title, price, image01, quantity, totalPrice } = item;
   const dispatch = useDispatch();
+  // Hàm 'increaseItem' để tăng số lượng của một sản phẩm trong giỏ hàng
   const increaseItem = () => {
     dispatch(cartActions.addItem({ id, title, price, image01 }));
   };
+  // Hàm 'increaseItem' để giảm số lượng của một sản phẩm trong giỏ hàng
   const decreaseItem = () => {
     dispatch(cartActions.removeItem(id));
   };
+    // Hàm 'deleteItem' để xóa một sản phẩm khỏi giỏ hàng
   const deleteItem = () => {
     dispatch(cartActions.deleteItem(id));
   };
+   // Giao diện của một mục trong giỏ hàng
   return (
     <ListGroupItem className='border-0 cart__item' key={id}>
       <div className='cart__item-info d-flex gap-2'>

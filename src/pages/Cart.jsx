@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 import { Container, Col, Row } from 'reactstrap';
 import { cartActions } from '../store/shopping-cart/cartSlice';
 const Cart = () => {
+  //cartItems lưu danh sách các sản phẩm trong giỏ hàng 
   const cartItems = useSelector((state) => state.cart.cartItems);
+  // totalAmount lưu tổng số tiền của giỏ hàng.
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   return (
     <Helmet title='Cart'>
@@ -16,6 +18,7 @@ const Cart = () => {
         <Container>
           <Row>
             <Col lg='12'>
+               {/* // Hiển thị bảng sản phẩm trong giỏ hàng */}
               {cartItems.length === 0 ? (
                 <h5 className='text-center'>Cart is empty</h5>
               ) : (
@@ -37,6 +40,7 @@ const Cart = () => {
                 </table>
               )}
               <div className='mt-4'>
+         {/* Hiển thị tổng tiền và các nút để tiếp tục mua sắm hoặc thanh toán */}
                 <h6>
                   Total:
                   <span className='cart__subtotal'> ${totalAmount}</span>
@@ -60,11 +64,13 @@ const Cart = () => {
 };
 
 const Tr = (props) => {
+  //Props bao gồm các thông tin của sản phẩm trong giỏ hàng 
   const { id, image01, title, price, quantity } = props.item;
   const dispatch = useDispatch();
-
+//deleteItem khi người dùng muốn xóa sản phẩm khỏi giỏ hàng.
   const deleteItem = () => dispatch(cartActions.deleteItem(id));
   return (
+    //    {/* Hiển thị thông tin sản phẩm và nút xóa */}
     <tr>
       <td className='text-center cart__img-box'>
         <img src={image01} alt='food'></img>

@@ -9,15 +9,27 @@ import { cartActions } from '../store/shopping-cart/cartSlice';
 import ProductCard from '../components/UI/product-card/ProductCard';
 import '../styles/product-details.css';
 const FoodDetails = () => {
+
+    // Khởi tạo các state để lưu trữ thông tin sản phẩm và đánh giá
   const [tab, setTab] = useState('desc');
   const [enteredName, setEnteredName] = useState('');
   const [enteredEmail, setEnteredEmail] = useState('');
   const [reviewMsg, setReviewMsg] = useState('');
+
+    // Sử dụng hook useParams để lấy tham số từ URL
   const { id } = useParams();
+
+    // Tìm sản phẩm dựa trên id từ danh sách sản phẩm
   const product = products.find((product) => product.id === id);
+
+    // Khởi tạo state và lấy ra một số thông tin từ sản phẩm
   const [previewImg, setPreviewImg] = useState(product.image01);
   const { title, price, category, desc, image01 } = product;
+
+  // Lọc ra các sản phẩm liên quan dựa trên category
   const relatedProduct = products.filter((item) => category === item.category);
+
+    // Sử dụng useDispatch để gửi action đến Redux store khi thêm sản phẩm vào giỏ hàng
   const dispatch = useDispatch();
   const addItem = () => {
     dispatch(
@@ -29,28 +41,38 @@ const FoodDetails = () => {
       })
     );
   };
-
+ 
+    // Xử lý khi người dùng nhấn nút "Submit" trên form đánh giá
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(enteredName, enteredEmail, reviewMsg);
   };
 
+   // Sử dụng useEffect để cập nhật hình ảnh xem trước khi sản phẩm thay đổi
   useEffect(() => {
     setPreviewImg(product.image01);
   }, [product]);
 
+  // Sử dụng useEffect để cuộn đến đầu trang khi sản phẩm thay đổi
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [product]);
+
+    // Render giao diện của trang chi tiết sản phẩm
   return (
+
+   // Sử dụng Helmet để thiết lập tiêu đề trang
     <Helmet title='Food Details'>
       <CommonSection title={title} />
+    {/* Phần nội dung chính của trang */}
       <section>
         <Container>
           <Row>
+   {/* Phần chọn hình ảnh sản phẩm */}
             <Col lg='2' md='2'>
               <div className='product__images'>
-                <div
+        {/* Xử lý khi người dùng nhấn vào hình ảnh */}
+               <div
                   className='img__item mb-3'
                   onClick={() => setPreviewImg(product.image01)}
                 >
@@ -70,11 +92,13 @@ const FoodDetails = () => {
                 </div>
               </div>
             </Col>
+        {/* Phần hiển thị hình ảnh sản phẩm lớn */}
             <Col lg='4' md='4'>
               <div className='product__main-img'>
                 <img src={previewImg} alt='' className='w-100' />
               </div>
             </Col>
+        {/* Phần thông tin sản phẩm */}
             <Col lg='6' md='6'>
               <div className='single__product-content'>
                 <h2 className='product__title mb-3'>{title}</h2>
@@ -89,6 +113,8 @@ const FoodDetails = () => {
                 </button>
               </div>
             </Col>
+
+           {/* Phần chuyển tab mô tả và đánh giá */}
             <Col lg='12'>
               <div className='tabs d-flex align-items-center gap-5 py-2'>
                 <h6
@@ -105,12 +131,14 @@ const FoodDetails = () => {
                 </h6>
               </div>
 
+              {/* Hiển thị nội dung tương ứng với tab được chọn */}
               {tab === 'desc' ? (
                 <div className='tab__content'>
                   <p>{desc}</p>
                 </div>
               ) : (
                 <div className='tab__form mb-3'>
+                {/* Hiển thị danh sách đánh giá và form đánh giá */}
                   <div className='review pt-5'>
                     <p className='user__name mb-0'>John Doe</p>
                     <p className='user__email'>johndoe@gmail.com</p>
@@ -160,10 +188,13 @@ const FoodDetails = () => {
                 </div>
               )}
             </Col>
+
+            {/* Phần sản phẩm liên quan */}
             <Col lg='12' className='mb-5 mt-4'>
               <h2 className='related__product-title'>Maybe you will like it too</h2>
             </Col>
 
+         {/* Hiển thị danh sách sản phẩm liên quan */}
             {relatedProduct.map((item) => (
               <Col lg='3' md='4' sm='6' xs='6' className='mb-4' key={item.id}>
                 <ProductCard item={item} />

@@ -135,16 +135,7 @@ const Home = () => {
               <h2 className='feature__title'>
                 we will <span>take care</span>
               </h2>
-              <p className='mb-1 mt-4 feature__text'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Laborum, deserunt.
-              </p>
-              <p className='mb-1 mt-4 feature__text'>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error,
-                ullam?
-              </p>
             </Col>
-
             {featureData.map((item, index) => {
               return (
                 <Col lg='4' md='6' sm='6' key={index} className='mt-5'>
@@ -232,12 +223,6 @@ const Home = () => {
                 <h2 className='foodie-title mb-4'>
                   Why <span>Foodie?</span>
                 </h2>
-                <p className='foodie-desc'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-                  laborum ratione maiores? Commodi quam nostrum recusandae! Quod
-                  ducimus non molestias, numquam labore quidem nam illum esse
-                  harum vitae laborum? Error!
-                </p>
                 <ListGroup className='mt-4'>
                   <ListGroupItem className='border-0 ps-0'>
                     <p className='choose__us-title d-flex align-items-center gap-2'>

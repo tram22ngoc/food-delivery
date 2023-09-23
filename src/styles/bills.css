@@ -1,0 +1,19 @@
+/* Change background color of the header row */
+.row.border-1 {
+    background-color:#dd5f20;/* Change to your desired background color */
+}
+
+/* Change text color of table headers */
+.table th {
+    color: #000000; /* Change to your desired text color */
+}
+
+a {
+    color: #007bff; /* Change to your desired link color */
+}
+
+/* Change the color of the pagination links */
+.pagination a.page-link {
+    color: #ff5733; 
+}
+
