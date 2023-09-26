@@ -1,24 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import { Container, Row, Col } from "reactstrap";
-import products from "../assets/fake-data/products";
 import ProductCard from "../components/UI/product-card/ProductCard";
 import "../styles/all-foods.css";
 import ReactPaginate from "react-paginate";
 import "../styles/pagination.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../store/admin/productsSlice";
 const AllFoods = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   // eslint vô hiệu hóa mảng dòng tiếp theo trả về
   const searchedProduct = products.filter((item) => {
-    if (searchTerm.value === "") {
-      return item;
-    } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return item;
-    }
+    return (
+      searchTerm === "" ||
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
+
   const productPerPage = 8;
   const visitedPage = pageNumber * productPerPage;
   const displayPage = searchedProduct.slice(
@@ -58,22 +64,24 @@ const AllFoods = () => {
                 </select>
               </div>
             </Col>
-
-            {displayPage.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
-                <ProductCard />
+          </Row>
+          <Row>
+            <div className="">
+              <Col lg="3" md="4" sm="6" xs="6" className="mb-4 ">
+                <ProductCard product={products} key={products.id} />
               </Col>
-            ))}
-            <div>
-              <ReactPaginate
-                pageCount={pageCount}
-                onPageChange={changePage}
-                previousLabel="Prev"
-                nextLabel="Next"
-                containerClassName="paginationBtns"
-              />
             </div>
           </Row>
+
+          <div>
+            <ReactPaginate
+              pageCount={pageCount}
+              onPageChange={changePage}
+              previousLabel="Prev"
+              nextLabel="Next"
+              containerClassName="paginationBtns"
+            />
+          </div>
         </Container>
       </section>
     </Helmet>
