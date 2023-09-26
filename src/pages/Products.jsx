@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Menu from "../components/Admin/Menu";
-import ModalDeleteProduct from "../components/Admin/ModalDeleteProduct";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteProduct, fetchData } from "../store/admin/productsSlice";
+
 const Products = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
   const navigate = useNavigate();
-  const showEditPane = (e: any, id: Number) => {
+  const showEditPane = (e, id) => {
     if (e) e.preventDefault();
     navigate(`/products/${id}`);
   };
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
+  const handleDeleteProduct = (productId) => {
+    dispatch(deleteProduct(productId));
+  };
+
   return (
     <>
       <Menu />
@@ -47,254 +58,56 @@ const Products = () => {
             </div>
           </div>
           <div className="row">
-            <table className="table table-striped table-hover">
+            <table
+              className="table table-striped table-hover text-center"
+              style={{
+                maxHeight: "200px",
+                overflowX: "hidden",
+                overflowY: "auto",
+              }}
+            >
               <thead>
                 <tr>
-                  <th>Number</th>
-                  <th>ID</th>
                   <th>Name</th>
+                  <th>Category</th>
                   <th>Price</th>
                   <th>Description</th>
-                  <th>Category</th>
                   <th>#</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
-                  <th>1</th>
-                  <th>Pz01</th>
-                  <th>Vegetarian Pizza</th>
-                  <th>$115</th>
-                  <th>
-                    <div>
-                      <p className="d-inline-flex gap-1">
-                        <a
-                          className=""
-                          data-bs-toggle="collapse"
-                          href="#Pz01"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          More...
-                        </a>
-                      </p>
-                      <div className="collapse" id="Pz01">
-                        <div className="card card-body bg-danger bg-opacity-10 ">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Soluta ad et est, fugiat repudiandae neque illo
-                          delectus commodi magnam explicabo autem voluptates
-                          eaque velit vero facere mollitia. Placeat rem,
-                          molestiae error obcaecati enim doloribus impedit
-                          aliquam, maiores qui minus neque.
+                {Array.isArray(products) && products.length > 0 ? (
+                  products.map((product) => (
+                    <tr key={product.id}>
+                      <td>{product.name}</td>
+                      <td>{product.category}</td>
+                      <td>${product.price}</td>
+                      <td>{product.desc}</td>
+                      <td>
+                        <div>
+                          {/* Button trigger modal */}
+                          <a
+                            type="button"
+                            className="text-warning"
+                            onClick={(e) => showEditPane(null, product.id)}
+                          >
+                            <i class="fa-solid fa-pen"></i>
+                          </a>
+                          <span> </span>
+                          <i
+                            className="fa-solid fa-remove text-danger"
+                            onClick={() => handleDeleteProduct(product.id)}
+                          ></i>
                         </div>
-                      </div>
-                    </div>
-                  </th>
-                  <th>Pizza</th>
-                  <th>
-                    <div>
-                      {/* Button trigger modal */}
-                      <a
-                        type="button"
-                        className="text-warning"
-                        onClick={(e) => showEditPane(null, 1)}
-                      >
-                        <i class="fa-solid fa-pen"></i>
-                      </a>
-                      <span> </span>
-                      <ModalDeleteProduct />
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>2</th>
-                  <th>Hb01</th>
-                  <th>Chicken Burger</th>
-                  <th>$24</th>
-                  <th>
-                    <div>
-                      <p className="d-inline-flex gap-1">
-                        <a
-                          className=""
-                          data-bs-toggle="collapse"
-                          href="#Hb01"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          More...
-                        </a>
-                      </p>
-                      <div className="collapse" id="Hb01">
-                        <div className="card card-body bg-danger bg-opacity-10">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Soluta ad et est, fugiat repudiandae neque illo
-                          delectus commodi magnam explicabo autem voluptates
-                          eaque velit vero facere mollitia. Placeat rem,
-                          molestiae error obcaecati enim doloribus impedit
-                          aliquam, maiores qui minus neque.
-                        </div>
-                      </div>
-                    </div>
-                  </th>
-                  <th>Burger</th>
-                  <th>
-                    <div>
-                      {/* Button trigger modal */}
-                      <a
-                        type="button"
-                        className="text-warning"
-                        onClick={(e) => showEditPane(null, 2)}
-                      >
-                        <i class="fa-solid fa-pen"></i>
-                      </a>
-                      <span> </span>
-                      <ModalDeleteProduct />
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <th>Pz02</th>
-                  <th>Double Cheese Margherita</th>
-                  <th>$110</th>
-                  <th>
-                    <div>
-                      <p className="d-inline-flex gap-1">
-                        <a
-                          className=""
-                          data-bs-toggle="collapse"
-                          href="#Pz02"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          More...
-                        </a>
-                      </p>
-                      <div className="collapse" id="Pz02">
-                        <div className="card card-body bg-danger bg-opacity-10">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Soluta ad et est, fugiat repudiandae neque illo
-                          delectus commodi magnam explicabo autem voluptates
-                          eaque velit vero facere mollitia. Placeat rem,
-                          molestiae error obcaecati enim doloribus impedit
-                          aliquam, maiores qui minus neque.
-                        </div>
-                      </div>
-                    </div>
-                  </th>
-                  <th>Pizza</th>
-                  <th>
-                    <div>
-                      {/* Button trigger modal */}
-                      <a
-                        type="button"
-                        className="text-warning"
-                        onClick={(e) => showEditPane(null, 3)}
-                      >
-                        <i class="fa-solid fa-pen"></i>
-                      </a>
-                      <span> </span>
-                      <ModalDeleteProduct />
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>4</th>
-                  <th>Pz03</th>
-                  <th>Mexican Green Wave</th>
-                  <th>$110</th>
-                  <th>
-                    <div>
-                      <p className="d-inline-flex gap-1">
-                        <a
-                          className=""
-                          data-bs-toggle="collapse"
-                          href="#Pz03"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          More...
-                        </a>
-                      </p>
-                      <div className="collapse" id="Pz03">
-                        <div className="card card-body bg-danger bg-opacity-10">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Soluta ad et est, fugiat repudiandae neque illo
-                          delectus commodi magnam explicabo autem voluptates
-                          eaque velit vero facere mollitia. Placeat rem,
-                          molestiae error obcaecati enim doloribus impedit
-                          aliquam, maiores qui minus neque.
-                        </div>
-                      </div>
-                    </div>
-                  </th>
-                  <th>Pizza</th>
-                  <th>
-                    <div>
-                      {/* Button trigger modal */}
-                      <a
-                        type="button"
-                        className="text-warning"
-                        onClick={(e) => showEditPane(null, 4)}
-                      >
-                        <i class="fa-solid fa-pen"></i>
-                      </a>
-                      <span> </span>
-                      <ModalDeleteProduct />
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>5</th>
-                  <th>Hb02</th>
-                  <th>Cheese Burger</th>
-                  <th>$24</th>
-                  <th>
-                    <div>
-                      <p className="d-inline-flex gap-1">
-                        <a
-                          className=""
-                          data-bs-toggle="collapse"
-                          href="#Hb02"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          More...
-                        </a>
-                      </p>
-                      <div className="collapse" id="Hb02">
-                        <div className="card card-body bg-danger bg-opacity-10">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Soluta ad et est, fugiat repudiandae neque illo
-                          delectus commodi magnam explicabo autem voluptates
-                          eaque velit vero facere mollitia. Placeat rem,
-                          molestiae error obcaecati enim doloribus impedit
-                          aliquam, maiores qui minus neque.
-                        </div>
-                      </div>
-                    </div>
-                  </th>
-                  <th>Burger</th>
-                  <th>
-                    <div>
-                      {/* Button trigger modal */}
-                      <a
-                        type="button"
-                        className="text-warning"
-                        onClick={(e) => showEditPane(null, 5)}
-                      >
-                        <i class="fa-solid fa-pen"></i>
-                      </a>
-                      <span> </span>
-                      <ModalDeleteProduct />
-                    </div>
-                  </th>
-                </tr>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="3">Loading...</td>
+                  </tr>
+                )}
               </tbody>
             </table>
             <div className="row">
