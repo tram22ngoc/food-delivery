@@ -22,11 +22,11 @@ const Cart = () => {
               {cartItems.length === 0 ? (
                 <h5 className="text-center">Cart is empty</h5>
               ) : (
-                <table className="table table-bordered">
+                <table className="table table-bordered ">
                   <thead>
                     <tr>
                       <th>Image</th>
-                      <th>Product</th>
+                      <th>Name</th>
                       <th>Price</th>
                       <th>Quantity</th>
                       <th>Delete</th>
