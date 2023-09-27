@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/admin.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
@@ -33,11 +33,6 @@ const Menu = () => {
           <div className="row mb-3">
             <Link className="text-dark" to="/bills">
               <i class="fa-solid fa-basket-shopping"></i> Bills
-            </Link>
-          </div>
-          <div className="row mb-3">
-            <Link className="text-dark" to="/supplier">
-              <i class="fa-solid fa-truck-field"></i> Supplier
             </Link>
           </div>
         </div>
