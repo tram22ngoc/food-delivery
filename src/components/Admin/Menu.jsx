@@ -35,11 +35,6 @@ const Menu = () => {
               <i class="fa-solid fa-basket-shopping"></i> Bills
             </Link>
           </div>
-          <div className="row mb-3">
-            <Link className="text-dark" to="/supplier">
-              <i class="fa-solid fa-truck-field"></i> Supplier
-            </Link>
-          </div>
         </div>
       </div>
       <div className="container-fluid mt-3">

@@ -15,8 +15,6 @@ import Users from "./../pages/Users";
 import UsersEdit from "./../pages/UsersEdit";
 import Bills from "./../pages/Bills";
 import Detaileinvoice from "../pages/Detailedinvoice";
-import Supplier from "../pages/Supplier";
-import SupplierEdit from "./../pages/SupplierEdit";
 
 const Routers = () => {
   return (
@@ -37,8 +35,6 @@ const Routers = () => {
       <Route path="/users/:id" element={<UsersEdit />} />
       <Route path="/bills" element={<Bills />} />
       <Route path="/bills/:id" element={<Detaileinvoice />} />
-      <Route path="/supplier" element={<Supplier />} />
-      <Route path="/supplier/:id" element={<SupplierEdit />} />
     </Routes>
   );
 };
