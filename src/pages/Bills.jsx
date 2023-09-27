@@ -1,22 +1,20 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Menu from "../components/Admin/Menu";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import ModalDeleteBill from "./../components/Admin/ModalDeleteBill";
 import { useNavigate } from "react-router-dom";
-
 const Bills = () => {
   const navigate = useNavigate();
-
-  const showEditPane = (id) => {
+  const showEditPane = (e: any, id: Number) => {
+    if (e) e.preventDefault();
     navigate(`/bills/${id}`);
   };
-
   return (
     <>
       <Menu />
-      <div className="row m-2 border border-1">
-        <div className="col-md-12">
+      <div class="row m-2  border border-1">
+        <div class="col-md-12">
           <div className="row border border-1">
             <div className="col-sm-6 align-self-center">
               <h2>Bills</h2>
@@ -37,36 +35,155 @@ const Bills = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Bill01</td>
-                  <td>Us01</td>
-                  <td>$139</td>
-                  <td>
+                  <th>1</th>
+                  <th>Bill01</th>
+                  <th>Us01</th>
+                  <th>$139</th>
+                  <th>
                     <div>
                       <p className="d-inline-flex gap-1">
-                        <button
+                        <a
                           type="button"
                           className="text-primary"
-                          onClick={() => showEditPane(1)}
+                          onClick={(e) => showEditPane(null, 1)}
                         >
                           More...
-                        </button>
+                        </a>
                       </p>
                     </div>
-                  </td>
-                  <td>2023/05/25</td>
-                  <td>
+                  </th>
+                  <th>2023/05/25</th>
+                  <th>
                     <div>
                       {/* Button trigger modal */}
-                      <button className="link-warning">
-                        <i className="fa-solid fa-pen"></i>
-                      </button>
+                      <a href="#" className="link-warning">
+                        <i class="fa-solid fa-pen"></i>
+                      </a>
                       <span> </span>
                       <ModalDeleteBill />
                     </div>
-                  </td>
+                  </th>
                 </tr>
-                {/* Các dòng dữ liệu khác ở đây */}
+                <tr>
+                  <th>2</th>
+                  <th>Bill02</th>
+                  <th>Us02</th>
+                  <th>$115</th>
+                  <th>
+                    <div>
+                      <p className="d-inline-flex gap-1">
+                        <a
+                          type="button"
+                          className="text-primary"
+                          onClick={(e) => showEditPane(null, 2)}
+                        >
+                          More...
+                        </a>
+                      </p>
+                    </div>
+                  </th>
+                  <th>2023/05/25</th>
+                  <th>
+                    <div>
+                      {/* Button trigger modal */}
+                      <a href="#" className="link-warning">
+                        <i class="fa-solid fa-pen"></i>
+                      </a>
+                      <span> </span>
+                      <ModalDeleteBill />
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <th>Bill03</th>
+                  <th>Us02</th>
+                  <th>$24</th>
+                  <th>
+                    <div>
+                      <p className="d-inline-flex gap-1">
+                        <a
+                          type="button"
+                          className="text-primary"
+                          onClick={(e) => showEditPane(null, 3)}
+                        >
+                          More...
+                        </a>
+                      </p>
+                    </div>
+                  </th>
+                  <th>2023/05/25</th>
+                  <th>
+                    <div>
+                      {/* Button trigger modal */}
+                      <a href="#" className="link-warning">
+                        <i class="fa-solid fa-pen"></i>
+                      </a>
+                      <span> </span>
+                      <ModalDeleteBill />
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <th>Bill04</th>
+                  <th>Us03</th>
+                  <th>$330</th>
+                  <th>
+                    <div>
+                      <p className="d-inline-flex gap-1">
+                        <a
+                          type="button"
+                          className="text-primary"
+                          onClick={(e) => showEditPane(null, 4)}
+                        >
+                          More...
+                        </a>
+                      </p>
+                    </div>
+                  </th>
+                  <th>2023/05/25</th>
+                  <th>
+                    <div>
+                      {/* Button trigger modal */}
+                      <a href="#" className="link-warning">
+                        <i class="fa-solid fa-pen"></i>
+                      </a>
+                      <span> </span>
+                      <ModalDeleteBill />
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <th>5</th>
+                  <th>Bill05</th>
+                  <th>Us04</th>
+                  <th>$378</th>
+                  <th>
+                    <div>
+                      <p className="d-inline-flex gap-1">
+                        <a
+                          type="button"
+                          className="text-primary"
+                          onClick={(e) => showEditPane(null, 5)}
+                        >
+                          More...
+                        </a>
+                      </p>
+                    </div>
+                  </th>
+                  <th>2023/05/25</th>
+                  <th>
+                    <div>
+                      {/* Button trigger modal */}
+                      <a href="#" className="link-warning">
+                        <i class="fa-solid fa-pen"></i>
+                      </a>
+                      <span> </span>
+                      <ModalDeleteBill />
+                    </div>
+                  </th>
+                </tr>
               </tbody>
             </table>
             <div className="row">
@@ -75,23 +192,29 @@ const Bills = () => {
                 <nav aria-label="Page navigation example">
                   <ul className="pagination">
                     <li className="page-item">
-                      <button className="page-link" aria-label="Previous">
+                      <a className="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">«</span>
-                      </button>
+                      </a>
                     </li>
                     <li className="page-item">
-                      <button className="page-link">1</button>
+                      <a className="page-link" href="#">
+                        1
+                      </a>
                     </li>
                     <li className="page-item">
-                      <button className="page-link">2</button>
+                      <a className="page-link" href="#">
+                        2
+                      </a>
                     </li>
                     <li className="page-item">
-                      <button className="page-link">3</button>
+                      <a className="page-link" href="#">
+                        3
+                      </a>
                     </li>
                     <li className="page-item">
-                      <button className="page-link" aria-label="Next">
+                      <a className="page-link" href="#" aria-label="Next">
                         <span aria-hidden="true">»</span>
-                      </button>
+                      </a>
                     </li>
                   </ul>
                 </nav>
