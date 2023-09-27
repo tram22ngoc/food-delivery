@@ -19,29 +19,33 @@ const ProductCard = ({ product }) => {
   };
   return (
     <div className="d-flex" style={{ width: "88vw" }}>
-      {product.map((item) => (
-        <div className="product__item mx-2" key={item.id}>
-          <div className="product__img">
-            <img src={item.image1} alt="product-img" className="w-50" />
-          </div>
-          <div className="product__content">
-            <h5>
-              <Link to={`/foods/${item.id}`}>{item.name}</Link>
-            </h5>
-            <div className="d-flex align-items-center justify-content-between">
-              <span className="product__price">${item.price}</span>
-              <button
-                onClick={() =>
-                  addToCart(item.id, item.name, item.price, item.image1)
-                }
-                className="addToCart__btn"
-              >
-                Add to cart
-              </button>
+      {product ? (
+        product.map((item) => (
+          <div className="product__item mx-2" key={item.id}>
+            <div className="product__img">
+              <img src={item.image1} alt="product-img" className="w-50" />
+            </div>
+            <div className="product__content">
+              <h5>
+                <Link to={`/foods/${item.id}`}>{item.name}</Link>
+              </h5>
+              <div className="d-flex align-items-center justify-content-between">
+                <span className="product__price">${item.price}</span>
+                <button
+                  onClick={() =>
+                    addToCart(item.id, item.name, item.price, item.image1)
+                  }
+                  className="addToCart__btn"
+                >
+                  Add to cart
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p>No products to display.</p>
+      )}
     </div>
   );
 };

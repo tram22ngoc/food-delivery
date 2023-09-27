@@ -118,7 +118,7 @@ const Products = () => {
                             />
                           </div>
                         </td>
-                        <td>{product.desc}</td>
+                        <td style={{ maxWidth: "300px" }}>{product.desc}</td>
                         <td>
                           <div>
                             {/* Button trigger modal */}
