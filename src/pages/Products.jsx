@@ -76,7 +76,7 @@ const Products = () => {
                   <th>Category</th>
                   <th>Price</th>
                   <th>Image</th>
-                  <th>#</th>
+                  <th>Description</th>
                 </tr>
               </thead>
 

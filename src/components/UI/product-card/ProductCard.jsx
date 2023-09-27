@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <>
-      <Row>
+      {/* <Row>
         <Col lg="6" md="6" sm="6" xs="12" className="mb-4">
           <div className="col-auto align-self-center">Select category:</div>
           <div className="col">
@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
             </select>
           </div>
         </Col>
-      </Row>
+      </Row> */}
       <div className="d-flex" style={{ width: "88vw", flexWrap: "wrap" }}>
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item) => (

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
 import "../../../styles/cart-item.css";
 const CartItem = ({ item }) => {
-  const { id, name, price, image1, quantity, totalPrice } = item;
+  const { id, name, price, image1, quantity, totalPrice} = item;
   const dispatch = useDispatch();
   // Hàm 'increaseItem' để tăng số lượng của một sản phẩm trong giỏ hàng
   const increaseItem = () => {

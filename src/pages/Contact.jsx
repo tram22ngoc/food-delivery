@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <Helmet title="Contact">
       <CommonSection title="Contact" />
-      <section>
+      {/* <section>
         <Container>
           <Row>
             <Col>
@@ -59,7 +59,7 @@ const Contact = () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
     </Helmet>
   );
 };

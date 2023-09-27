@@ -264,7 +264,7 @@ const Home = () => {
           </Row>
         </Container>
       </section>
-
+{/* 
       <section className="pt-0">
         <Container>
           <Row>
@@ -279,7 +279,7 @@ const Home = () => {
             ))}
           </Row>
         </Container>
-      </section>
+      </section> */}
 
       <section>
         <Container>
