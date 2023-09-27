@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=RocknRoll+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=RocknRoll+One&display=swap");
 
 :root {
   --primary-color: #4c2c10;
@@ -10,11 +10,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100vw;
 }
 
 body {
   background-color: #fcfcfc;
-  font-family: 'Istok Web', sans-serif;
+  font-family: "Istok Web", sans-serif;
 }
 
 h1,
@@ -23,7 +24,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'RocknRoll One', sans-serif !important;
+  font-family: "RocknRoll One", sans-serif !important;
 }
 
 a {

@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
 import "../../../styles/cart-item.css";
 const CartItem = ({ item }) => {
-  const { id, name, price, image01, quantity, totalPrice } = item;
+  const { id, name, price, image1, quantity, totalPrice } = item;
   const dispatch = useDispatch();
   // Hàm 'increaseItem' để tăng số lượng của một sản phẩm trong giỏ hàng
   const increaseItem = () => {
-    dispatch(cartActions.addItem({ id, name, price, image01 }));
+    dispatch(cartActions.addItem({ id, name, price, image1 }));
   };
   // Hàm 'increaseItem' để giảm số lượng của một sản phẩm trong giỏ hàng
   const decreaseItem = () => {
@@ -22,7 +22,7 @@ const CartItem = ({ item }) => {
   return (
     <ListGroupItem className="border-0 cart__item" key={id}>
       <div className="cart__item-info d-flex gap-2">
-        <img src={image01} alt="product-img" />
+        <img src={image1} alt="product-img" />
         <div className="cart__product-info w-100 d-flex align-items-center justify-content-between gap-4">
           <div>
             <h6 className="cart__product-title">{name}</h6>

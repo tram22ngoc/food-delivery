@@ -132,6 +132,7 @@ const Products = () => {
                             <span> </span>
                             <i
                               className="fa-solid fa-remove text-danger"
+                              style={{ cursor: "pointer" }}
                               onClick={() => handleDeleteProduct(product.id)}
                             ></i>
                           </div>

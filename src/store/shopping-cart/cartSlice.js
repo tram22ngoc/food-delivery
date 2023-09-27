@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartItems: [],
@@ -6,31 +6,31 @@ const initialState = {
   totalAmount: 0,
 };
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: initialState,
 
   reducers: {
     addItem(state, action) {
-   // Lấy dữ liệu từ hành động
+      // Lấy dữ liệu từ hành động
       const newItem = action.payload;
       // Lọc dữ liệu mới ở trạng thái ban đầu
       const existingItem = state.cartItems.find(
         (item) => item.id === newItem.id
       );
-// Tổng số lượng sẽ tăng thêm 1
+      // Tổng số lượng sẽ tăng thêm 1
       state.totalQuantity++;
-// Nếu không có mục mới nào trong mục hiện có, hãy đẩy dữ liệu của mục mới vào mảng
+      // Nếu không có mục mới nào trong mục hiện có, hãy đẩy dữ liệu của mục mới vào mảng
       if (!existingItem) {
         state.cartItems.push({
           id: newItem.id,
           title: newItem.title,
-          image01: newItem.image01,
+          image1: newItem.image1,
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
         });
       }
-  // Nếu có mặt hàng mới, điều này sẽ tăng số lượng cũng như tổng giá của nó
+      // Nếu có mặt hàng mới, điều này sẽ tăng số lượng cũng như tổng giá của nó
       // Tổng giá được tính bằng tổng giá của mặt hàng mới và giá của mặt hàng hiện tại
       else {
         existingItem.quantity++;
